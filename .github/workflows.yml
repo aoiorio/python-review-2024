@@ -1,0 +1,32 @@
+
+name: 🍞 Check my codes
+
+on:
+  pull_request:
+    branches: ["main"]
+
+  push:
+    branches: ["main"]
+
+# It mustn't happen the actions simultaneously
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🌊 Checkout Code Repository
+        uses: actions/checkout@v3
+
+      - name: 🌽 Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+
+      - name: Run pre-commit
+        uses: pre-commit/action@v2.0.3
