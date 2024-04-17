@@ -3,7 +3,7 @@ name: 🍞 Check my codes
 
 on:
   pull_request:
-    branches: ["main"]
+    branches: ["*"]
 
   push:
     branches: ["main"]
