@@ -1,5 +1,4 @@
 import cv2
-
 # 顔を検出する画像のパス
 img_path = input()
 
