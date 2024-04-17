@@ -28,5 +28,5 @@ jobs:
           cache-dependency-path: |
             requirements.txt
 
-      - name: Run pre-commit
+      - name: 🧠 Run pre-commit
         uses: pre-commit/action@v2.0.3
