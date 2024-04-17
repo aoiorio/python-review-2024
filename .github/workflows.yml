@@ -6,7 +6,7 @@ on:
     branches: ["*"]
 
   push:
-    branches: ["main"]
+    branches: ["*"]
 
 # It mustn't happen the actions simultaneously
 concurrency:
