@@ -74,7 +74,7 @@ class VendingMachine:
         return total
     def get_drink_list(self):
         result = self.d.get_drink_list()
-        return result 
+        return result
 
 
 
