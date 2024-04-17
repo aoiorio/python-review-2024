@@ -12,9 +12,13 @@
     - [How to reverse the audio](https://algorithm.joho.info/programming/python/pydub-reverse-repeat/)
     - [How to transcribe from wav file](https://self-development.info/pythonで音声からテキストへ変換【speechrecognition】/)
 
+    <br>
+
 - 🍕 Github Actions
     - [How to create github actions with pre-commit mainly](https://zenn.dev/ikura1/articles/ea4031e5bacdb3023658)
     - [How to create github actions with pre-commit](https://zenn.dev/erueru_tech/articles/d45ab27ec83927)
+
+    <br>
 
 - 😑 Other
     - [How to summarize packages](https://qiita.com/neko-kamaboko/items/2d59022bbc7e314f1f11)
