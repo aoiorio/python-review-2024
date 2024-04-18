@@ -5,7 +5,7 @@ from pydub import AudioSegment
 import os
 
 def transcribe():
-    # 入力
+    # Input
     stream_input = input("Do you want to transcribe Hanami's voice? Y/N: ")
     if stream_input == "Y":
         stream_input = "hanami.mp4"
