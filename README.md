@@ -11,6 +11,7 @@
     - [How to transcribe from video](https://note.com/haruaki12/n/n8c14516e79e7)
     - [How to reverse the audio](https://algorithm.joho.info/programming/python/pydub-reverse-repeat/)
     - [How to transcribe from wav file](https://self-development.info/pythonで音声からテキストへ変換【speechrecognition】/)
+    - [How to convert to wav from mp3](https://self-development.info/【簡単】pythonで動画から音声（mp3・wav）を抽出する方/)
 
     <br>
 
