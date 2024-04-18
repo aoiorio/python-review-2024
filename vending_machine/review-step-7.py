@@ -1,3 +1,9 @@
+import random
+
+def get_unique_list(drink_list):
+    seen = []
+    return [x for x in drink_list if x not in seen and not seen.append(x)]
+
 class VendingMachine:
     # initialize money_list, Define the variables
     def __init__(self):
@@ -5,6 +11,7 @@ class VendingMachine:
         self.not_allowed_money = [1, 5, 2000, 5000, 10000]  # step 1
         self.profits = 0
         self.refund_money = 0
+        self.drinks_you_can_buy = []
 
     def insert_money(self, money):
         if money in self.not_allowed_money:  # step 1
@@ -40,7 +47,7 @@ class VendingMachine:
                 print(f"Your change is {self.refund_money}")
                 c = Change()
                 print(f"Specifically, Your change is {c.get_change(self.refund_money)}")
-                print(f"The stock is now {c.change_money_dict}")
+                print(f"The stock of change is now {c.change_money_dict}")
 
                 return
 
@@ -52,12 +59,48 @@ class VendingMachine:
         result = []
         # これは、ドリンクがあるものだから。確認しなくても大丈夫
         for drink in drink_list:
-            if money >= drink["price"] and not drink in result:
-                result.append(drink)
+            if money >= drink["price"] and not drink in self.drinks_you_can_buy:
+                self.drinks_you_can_buy.append(drink)
 
-        return result
+        return self.drinks_you_can_buy
+
+    def buy_random_drink(self, drink_list,):
+        random_drink_list = [{"name": "coke", "price": 120}, {"name": "dietcoke", "price": 120}, {"name": "tea", "price": 120}]
+        new_random_drink_list = []
+        unique_drink_list = get_unique_list(drink_list)
+
+        for unique_drink in unique_drink_list:
+            if unique_drink in random_drink_list:
+                new_random_drink_list.append(unique_drink)
+        if not new_random_drink_list:
+            print(f"Sorry, you can't buy a random drink now, because the stock is empty now.")
+            return
+
+        # buy a random drink from random_drink_list
+        random_drink_index_for_buying = random.randrange(len(new_random_drink_list))
+        v.buy_drink(drink_list, random_drink_list[random_drink_index_for_buying]["name"])
 
 
+        # TODO from this, I think I should separate logic no I don't need it.
+        """
+        かぶってもいいのか？？？ 例えば、cokeがdrinks_you_can_buyに入っていたら、randomで取得したcokeを入れてもいいのか？？
+        いいことにしよう！！
+        # random_drink_index = random.randrange(len(drinks_you_can_buy))
+
+        # If there's same one in random_drink_list reassign the value
+        # while drinks_you_can_buy[random_drink_index] in random_drink_list:
+        #     random_drink_index = random.randrange(len(drinks_you_can_buy))
+
+        # new_random_drink_list.append(drinks_you_can_buy[random_drink_index])
+
+        # self.drinks_you_can_buy.append(drinks_you_can_buy[random_drink_index])
+        # print("wtf")
+        # print(new_random_drink_list)
+        # return self.drinks_you_can_buy
+        """
+
+        self.drinks_you_can_buy.append({"name": random_drink_list[random_drink_index_for_buying]["name"], "price": self.refund_money})
+        print(f"For now, you can buy ☟☟☟☟☟☟\n{self.drinks_you_can_buy}")
 
 class DrinkManager:
     def __init__(self):
@@ -120,29 +163,23 @@ class Change:
             # Calculate 50 Yen
             if key == '10' and int(change_money_list[i]) >= 5:
                 separate_change_money_dict['50'] = "1"
-                # self.change_money_dict["50"] = self.change_money_dict["50"] - 1
 
                 # Summarize 10 Yen
                 if int(change_money_list[i]) - 5 >= 0:
                     current_value = separate_change_money_dict["10"]
                     separate_change_money_dict["10"] = current_value + int(change_money_list[i]) - 5
-                    # self.change_money_dict["10"] = self.change_money_dict["10"] - 1
                 continue
 
             # Calculate 100 Yen
             if key == '100' and int(change_money_list[i]) >= 5:
                 separate_change_money_dict['500'] = "1"
-                # self.change_money_dict['500'] = self.change_money_dict['500'] - 1
 
                 # Summarize 100 Yen
                 if int(change_money_list[i]) - 5 >= 0:
                     current_value = separate_change_money_dict["100"]
                     separate_change_money_dict["100"] = current_value + int(change_money_list[i]) - 5
-                    # self.change_money_dict["100"] = self.change_money_dict["100"] - 1
                 continue
 
-            # self.change_money_dict[key] = self.change_money_dict[key] - int(change_money_list[i])
-            # print(change_money_list[i])
 
             separate_change_money_dict[key] = change_money_list[i] # Set the value that I got
 
@@ -152,11 +189,11 @@ class Change:
         self.change_money_dict["50"] = self.change_money_dict["50"] - int(separate_change_money_dict["50"])
         self.change_money_dict["10"] = self.change_money_dict["10"] - int(separate_change_money_dict["10"])
 
-        return separate_change_money_dict
+        # If the change is not enough, return "0"
+        if "10000" in separate_change_money_dict.keys():
+            return "0"
 
-    # def decrease_change_stock(self, separate_dict):
-    #     print(self.change_money_dict["1000"])
-    #     print(separate_dict["10"])
+        return separate_change_money_dict
 
 
 
@@ -183,7 +220,7 @@ print(f"The name is {drink_name}")
 
 print("-------------------------------------------")
 v = VendingMachine()
-v.insert_money(400)
+v.insert_money(200)
 
 # Buy drink
 v.buy_drink(drink_list, "coke")
@@ -200,10 +237,24 @@ print(f"Your refund money is {v.refund_money}")
 for i in range(5):
     d.set_drink({"name": "redbull", "price": 200})
 
-# Add 5 bottles of redbull
+# Add 5 bottles of water
 for i in range(5):
     d.set_drink({"name": "water", "price": 100})
 
 # Get drinks that you can buy with your money
 drinks_you_can_buy = v.get_drinks_you_can_buy(drink_list)
 print(f"You can buy {drinks_you_can_buy}")
+
+print('-------------------------------------------')
+# Add 5 bottles of dietcoke
+for i in range(5):
+    d.set_drink({"name": "dietcoke", "price": 120})
+
+# Add 5 bottles of tea
+for i in range(5):
+    d.set_drink({"name": "tea", "price": 120})
+
+# reassign or update drinks_you_can_buy
+drinks_you_can_buy = v.get_drinks_you_can_buy(drink_list)
+
+v.buy_random_drink(drink_list)
