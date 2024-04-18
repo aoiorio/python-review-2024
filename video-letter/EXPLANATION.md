@@ -4,6 +4,7 @@
 - video-letter-own.py file is for transcribing from only Hanami's voice. Because the video will reverse and it'll be texts.
 
 - I recommend you to use video-letter-own.py
+<br>
 
 ## 😈 The logic of video-letter-own.py
 - This code can convert to wav file from mp4.
