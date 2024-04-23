@@ -12,6 +12,7 @@
     - [How to reverse the audio](https://algorithm.joho.info/programming/python/pydub-reverse-repeat/)
     - [How to transcribe from wav file](https://self-development.info/pythonで音声からテキストへ変換【speechrecognition】/)
     - [How to convert to wav from mp3](https://self-development.info/【簡単】pythonで動画から音声（mp3・wav）を抽出する方/)
+    - [How to get rid of duplicate values from a list](https://note.nkmk.me/python-list-unique-duplicate/)
 
     <br>
 
