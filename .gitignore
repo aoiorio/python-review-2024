@@ -2,3 +2,6 @@ photoenv
 video-letterenv
 video-letter/video-letterenv/bin
 photo-cut-circleenv
+csv-examenv
+.DS_Store
+face-glasses-env
