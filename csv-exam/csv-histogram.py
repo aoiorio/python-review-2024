@@ -5,7 +5,6 @@ sys.path.append(
     "/Users/atoatoatomu/Desktop/2024-programming-class/python_review/csv-exam/csv-examenv/lib/python3.12/site-packages"
 )
 
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import math

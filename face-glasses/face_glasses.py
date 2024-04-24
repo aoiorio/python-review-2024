@@ -6,11 +6,11 @@ sys.path.append(
 import face_glasses_def
 from PIL import Image
 
-image_path = "/Users/atoatoatomu/Downloads/images.jpeg"
+image_path = "/Users/atoatoatomu/Downloads/aaa.jpg"
 glasses_image = Image.open("/Users/atoatoatomu/Downloads/glasses.jpg")
 image_path_open = Image.open(image_path)
 
-# get Coordinate of face line
+# get Coordinate of face line, detector means 顔検出器
 face_detect = face_glasses_def.recognize_face(image_path)
 
 # for pasting glasses image to monariza, I'll resize it.

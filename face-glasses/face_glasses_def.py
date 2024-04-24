@@ -22,7 +22,6 @@ def recognize_face(image_path):
     face_detect = cascade.detectMultiScale(img_gray)
     print(f"face_detect: {face_detect}")
 
-    # 検出した顔を赤く囲む
 
     result_x = 0
     result_y = 0
