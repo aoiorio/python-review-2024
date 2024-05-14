@@ -12,7 +12,7 @@ from spire.common import *
 # Workbookクラスのオブジェクトを作成し、Excelファイルをロードする
 # it depends on libSkiaSharp.dylib file, so you must prepare it
 workbook = Workbook()
-workbook.LoadFromFile("/Users/atoatoatomu/Desktop/2024-programming-class/python_review/csv-exam/after-calculate.xlsx")
+workbook.LoadFromFile("/Users/atoatoatomu/Desktop/2024-programming-class/python_review/csv-exam/result-calculate-sum.xlsx")
 
 # ExcelファイルをPDFファイルに変換して保存する
 workbook.SaveToFile("output/convert-pdf-from-csv.pdf", FileFormat.PDF)
